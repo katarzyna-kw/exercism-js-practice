@@ -4,7 +4,7 @@
 //
 
  export const clean = (input) => {
-  //remove (, ), -, ., '+1' (if preceded by blank space) and empty spaces with regex before checking if over 11
+  //remove (, ), -, ., and empty spaces with regex before checking if over 11
 
   // const cleanInput = input.replace(/[[\[\]\-\.\(\)\s\\+]/g, '').replace(/^1+/g, '')
 
