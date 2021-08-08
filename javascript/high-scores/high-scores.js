@@ -17,11 +17,19 @@ export class HighScores {
   }
 
   get personalBest() {
+    //sort array in descending order using sort method with compare function to work properly for integers
+    //return sortedArray
     this.sortedArray = this.input.sort((a, b) => b - a);
     return this.sortedArray[0]
   }
 
   get personalTopThree() {
+    //sort array in descending order
+    //create topScores array
+    //push first sorted item to topScores
+    //if 2nd item exist, push to topScores
+    //if 3rd item exists, push to topScores
+    //return topScores
     this.sortedArray = this.input.sort((a, b) => b - a);
     this.topScores = []
     this.topScores.push(this.sortedArray[0])
