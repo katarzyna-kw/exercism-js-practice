@@ -4,34 +4,33 @@
 //
 
 export const isPaired = (str) => {
-  let open = [];
-  let matches = {
-    '(': ')',
-    '[': ']',
-    '{': '}'
+  //create an obj to store matches
+  const matches = {
+    '[':']',
+    '{':'}',
+    '(':')'
   }
-  if (str.length===0) {
-    return true
-  }
-  //remove all characters except brackets
-  let cleanStr = str.replace(/[\^A-Za-z0-9&\\\*\-\\/\+\.\s]/g, '');
+  //create array to store open brackets from str
+  const open=[]
 
-  //loop through cleanStr
-  for (let i=0; i<=cleanStr.length; i++) {
-    //if char is open, push into open array
-    if (cleanStr[i]==='('||cleanStr[i]==='['||cleanStr[i]==='{') {
-      open.push(cleanStr[i]);
+  //place all brackets in str into array
+  const allBrackets=str.match(/[([{}\])]/g) || [];
+
+  //isolate open into array
+  for (let i=0; i<allBrackets.length; i++) {
+    if (allBrackets[i]==='[' || allBrackets[i]==='{' || allBrackets[i]==='(') {
+      open.push(allBrackets[i])
     } else {
-      //else isolate the last opening brace so it can used to compare to obj key
-      let last=open.pop();
-      if (cleanStr[i] !== matches[last]) {
-        return false
-      }
+      //when str[i] is closed, compare it to the last open bracket to see if they match
+        let last=open.pop()
+        if (matches[last]!==allBrackets[i]) return false
     }
   }
-  //check if open is empty/no open bracket left
+
   if (open.length!==0) {
     return false
   }
+
   return true
+
 }
