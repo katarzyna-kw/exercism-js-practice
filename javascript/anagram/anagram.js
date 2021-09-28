@@ -3,16 +3,19 @@
 // convenience to get you started writing code faster.
 //
 
+//helper function sort letters and create sorted str for comparison
+const sortStr = (str) => [...str.toLowerCase()].sort().join('');
+
 export const findAnagrams = (str, arr) => {
   const anagrams = []
 
-  const sortStr = [...str.toLowerCase()].sort().join('');
+  const sortedStr = sortStr(str)
   
   for (const word of arr) {
     if (word.toLowerCase() !== str.toLowerCase()) {
-      let newWord = [...word.toLowerCase()].sort().join('');
-      if (newWord === sortStr) {
-      anagrams.push(word)
+      let sortedWord = sortStr(word)
+      if (sortedWord === sortedStr) {
+        anagrams.push(word)
       }
     }
   }
