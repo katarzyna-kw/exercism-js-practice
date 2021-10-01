@@ -3,28 +3,23 @@
 // convenience to get you started writing code faster.
 //
 
-
-class Matrix {
+export class Matrix {
   constructor(matrix) {
     this.matrix = matrix;
-
-    this.rowArray = this.matrix.split('\n').map(row => row.split(' ').map(num => +num))
+    //split string into array of substrings
+    ///map over and split each substring into its own array
+    //map over and change substring value within its own array to numeric value within its own array
+    this.rowArray = matrix.split('\n').map(row => row.split(' ').map(item => +item));
   }
 
   get rows() {
-    return this.rowArray
-
+    return this.rowArray;
+    ;
   }
 
   get columns() {
+    const columnArray = this.rowArray[0].map((item, index) => this.rowArray.map(row => row[index]));
 
-    this.columnArray = this.rowArray[0].map((item,  index) => this.rowArray.map(row => row[index]))
-
-    return this.columnArray;
-  }
-}
-
-
-
-
-
+    return columnArray;
+    }
+ }
